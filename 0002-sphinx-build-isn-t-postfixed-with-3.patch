@@ -1,0 +1,25 @@
+From 8e34a5ff166816793e300d71606b434843b3d6a1 Mon Sep 17 00:00:00 2001
+From: William Douglas <william.douglas@intel.com>
+Date: Tue, 10 Oct 2017 19:54:24 +0000
+Subject: [PATCH] sphinx-build isn't postfixed with 3
+
+---
+ docs/hawkey/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/docs/hawkey/CMakeLists.txt b/docs/hawkey/CMakeLists.txt
+index b3268b5..e475b45 100644
+--- a/docs/hawkey/CMakeLists.txt
++++ b/docs/hawkey/CMakeLists.txt
+@@ -4,7 +4,7 @@
+ if (${PYTHON_DESIRED} STREQUAL "2")
+     SET(SPHINX_BUILD_NAME "sphinx-build")
+ else()
+-    SET(SPHINX_BUILD_NAME "sphinx-build-3")
++    SET(SPHINX_BUILD_NAME "sphinx-build")
+ endif()
+ 
+ OPTION(WITH_MAN "Enables hawkey man page generation" ON)
+-- 
+2.14.2
+
