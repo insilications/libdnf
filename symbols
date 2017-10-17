@@ -306,7 +306,9 @@ libdnf.so.1:dnf_sack_get_excludes
 libdnf.so.1:dnf_sack_get_includes
 libdnf.so.1:dnf_sack_get_installonly
 libdnf.so.1:dnf_sack_get_installonly_limit
+libdnf.so.1:dnf_sack_get_pkg_solvables
 libdnf.so.1:dnf_sack_get_pool
+libdnf.so.1:dnf_sack_get_pool_nsolvables
 libdnf.so.1:dnf_sack_get_running_kernel
 libdnf.so.1:dnf_sack_get_type
 libdnf.so.1:dnf_sack_get_use_includes
@@ -332,6 +334,7 @@ libdnf.so.1:dnf_sack_set_excludes
 libdnf.so.1:dnf_sack_set_includes
 libdnf.so.1:dnf_sack_set_installonly
 libdnf.so.1:dnf_sack_set_installonly_limit
+libdnf.so.1:dnf_sack_set_pkg_solvables
 libdnf.so.1:dnf_sack_set_rootdir
 libdnf.so.1:dnf_sack_set_running_kernel_fn
 libdnf.so.1:dnf_sack_set_use_includes
