@@ -1,0 +1,7 @@
+0.15.2
+pkgconfig(cppunit)
+python3-dev
+pkgconfig(sqlite3)
+popt-dev
+pkgconfig(modulemd)
+pkgconfig(json-c)

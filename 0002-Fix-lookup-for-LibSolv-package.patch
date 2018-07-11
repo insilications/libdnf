@@ -1,0 +1,29 @@
+From 11119fa5db2dae8a44f49e094d48abcc3e96610e Mon Sep 17 00:00:00 2001
+From: Patrick McCarty <patrick.mccarty@intel.com>
+Date: Thu, 12 Jul 2018 15:12:08 -0700
+Subject: [PATCH 2/2] Fix lookup for LibSolv package
+
+The FindLibSolv.cmake file lives in /usr/share/cmake/Modules, so ensure
+the libdnf build looks at that location.
+
+Signed-off-by: Patrick McCarty <patrick.mccarty@intel.com>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6596224..5281b69 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -36,7 +36,7 @@ option (ENABLE_RHSM_SUPPORT "Build with Red Hat Subscription Manager support?" O
+ 
+ # hawkey dependencies
+ find_package (PkgConfig REQUIRED)
+-SET (CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
++SET (CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules;/usr/share/cmake/Modules/)
+ if (APPLE)
+     SET(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:/usr/local/lib64/pkgconfig")
+     SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH};/usr/local/share/cmake/Modules/)
+-- 
+2.18.0
+

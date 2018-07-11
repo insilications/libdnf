@@ -3,9 +3,13 @@ libgcc_s.so.1
 libgio-2.0.so.0
 libglib-2.0.so.0
 libgobject-2.0.so.0
-libpython3.6m.so.1.0
+libjson-c.so.4
+libmodulemd.so.1
+libpython3.7m.so.1.0
 librepo.so.0
 librpm.so.3
 librpmio.so.3
 libsolv.so.0
 libsolvext.so.0
+libsqlite3.so.0
+libstdc++.so.6
