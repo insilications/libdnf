@@ -1,0 +1,15 @@
+do fewer fsyncs
+
+we only use dnf to create volatile chroots, and the fdatasync/fsync's are killing us on performance
+
+--- libdnf-0.15.2/libdnf/utils/sqlite3/Sqlite3.cpp~	2018-06-29 10:04:40.000000000 +0000
++++ libdnf-0.15.2/libdnf/utils/sqlite3/Sqlite3.cpp	2018-07-23 15:00:02.572455746 +0000
+@@ -32,7 +32,7 @@
+         }
+         // sqlite doesn't behave correctly in chroots without following line:
+         // turn foreign key checking on
+-        exec("PRAGMA journal_mode = TRUNCATE; PRAGMA locking_mode = EXCLUSIVE; PRAGMA foreign_keys = ON;");
++        exec("PRAGMA journal_mode = MEMORY; PRAGMA locking_mode = EXCLUSIVE; PRAGMA foreign_keys = ON;");
+     }
+ }
+ 

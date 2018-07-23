@@ -4,7 +4,7 @@
 #
 Name     : libdnf
 Version  : 0.15.2
-Release  : 16
+Release  : 17
 URL      : https://github.com/rpm-software-management/libdnf/archive/0.15.2.tar.gz
 Source0  : https://github.com/rpm-software-management/libdnf/archive/0.15.2.tar.gz
 Summary  : Library providing simplified C and Python API to libsolv
@@ -16,7 +16,7 @@ Requires: libdnf-license
 Requires: libdnf-man
 Requires: libdnf-python
 BuildRequires : Sphinx
-BuildRequires : cmake
+BuildRequires : buildreq-cmake
 BuildRequires : glibc-bin
 BuildRequires : pkgconfig(check)
 BuildRequires : pkgconfig(cppunit)
@@ -34,6 +34,7 @@ BuildRequires : python3-dev
 BuildRequires : swig
 Patch1: 0001-sphinx-build-isn-t-postfixed-with-3.patch
 Patch2: 0002-Fix-lookup-for-LibSolv-package.patch
+Patch3: less-fsync.patch
 
 %description
 A Library providing simplified C and Python API to libsolv.
@@ -104,13 +105,14 @@ python3 components for the libdnf package.
 %setup -q -n libdnf-0.15.2
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1531434717
+export SOURCE_DATE_EPOCH=1532358239
 mkdir clr-build
 pushd clr-build
 %cmake .. -DPYTHON_DESIRED=3
@@ -118,7 +120,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1531434717
+export SOURCE_DATE_EPOCH=1532358239
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/libdnf
 cp COPYING %{buildroot}/usr/share/doc/libdnf/COPYING
