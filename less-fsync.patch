@@ -9,7 +9,7 @@ we only use dnf to create volatile chroots, and the fdatasync/fsync's are killin
          // sqlite doesn't behave correctly in chroots without following line:
          // turn foreign key checking on
 -        exec("PRAGMA journal_mode = TRUNCATE; PRAGMA locking_mode = EXCLUSIVE; PRAGMA foreign_keys = ON;");
-+        exec("PRAGMA journal_mode = MEMORY; PRAGMA locking_mode = EXCLUSIVE; PRAGMA foreign_keys = ON;");
++        exec("PRAGMA journal_mode = MEMORY; PRAGMA locking_mode = EXCLUSIVE; PRAGMA foreign_keys = ON; PRAGMA synchronous = OFF");
      }
  }
  
