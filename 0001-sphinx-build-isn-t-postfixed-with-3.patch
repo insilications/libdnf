@@ -12,7 +12,7 @@ index 377faae..77f5f23 100644
 --- a/docs/hawkey/CMakeLists.txt
 +++ b/docs/hawkey/CMakeLists.txt
 @@ -4,7 +4,7 @@
- if (${PYTHON_DESIRED} STREQUAL "2")
+ if (${PYTHON_VERSION_MAJOR} STREQUAL "2")
      SET(SPHINX_BUILD_NAME "sphinx-build")
  else()
 -    SET(SPHINX_BUILD_NAME "sphinx-build-3")

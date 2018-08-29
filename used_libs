@@ -9,6 +9,7 @@ libpython3.7m.so.1.0
 librepo.so.0
 librpm.so.3
 librpmio.so.3
+libsmartcols.so.1
 libsolv.so.0
 libsolvext.so.0
 libsqlite3.so.0
