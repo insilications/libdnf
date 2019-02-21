@@ -1,4 +1,5 @@
-0.17.2
+0.26.0
+gpgme-dev
 pkgconfig(cppunit)
 pkgconfig(json-c)
 pkgconfig(modulemd)

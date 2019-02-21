@@ -2,14 +2,16 @@ do fewer fsyncs
 
 we only use dnf to create volatile chroots, and the fdatasync/fsync's are killing us on performance
 
---- libdnf-0.15.2/libdnf/utils/sqlite3/Sqlite3.cpp~	2018-06-29 10:04:40.000000000 +0000
-+++ libdnf-0.15.2/libdnf/utils/sqlite3/Sqlite3.cpp	2018-07-23 15:00:02.572455746 +0000
-@@ -32,7 +32,7 @@
-         }
-         // sqlite doesn't behave correctly in chroots without following line:
-         // turn foreign key checking on
--        exec("PRAGMA journal_mode = TRUNCATE; PRAGMA locking_mode = DEFAULT; PRAGMA foreign_keys = ON;");
-+        exec("PRAGMA journal_mode = MEMORY; PRAGMA locking_mode = DEFAULT; PRAGMA foreign_keys = ON; PRAGMA synchronous = OFF");
-     }
- }
- 
+diff --git a/libdnf/utils/sqlite3/Sqlite3.cpp b/libdnf/utils/sqlite3/Sqlite3.cpp
+index 61a0ed6..c8a88f7 100644
+--- a/libdnf/utils/sqlite3/Sqlite3.cpp
++++ b/libdnf/utils/sqlite3/Sqlite3.cpp
+@@ -36,7 +36,7 @@ SQLite3::open()
+         if (sqlite3_db_readonly(db, "main") == 1)
+             exec("PRAGMA locking_mode = NORMAL; PRAGMA foreign_keys = ON;");
+         else
+-            exec("PRAGMA locking_mode = NORMAL; PRAGMA journal_mode = WAL; PRAGMA foreign_keys = ON;");
++            exec("PRAGMA locking_mode = NORMAL; PRAGMA journal_mode = MEMORY; PRAGMA foreign_keys = ON; PRAGMA synchronous = OFF");
+ #else
+         // Journal mode WAL in readonly mode is supported from sqlite version 3.22.0
+         exec("PRAGMA locking_mode = NORMAL; PRAGMA journal_mode = TRUNCATE; PRAGMA foreign_keys = ON;");

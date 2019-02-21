@@ -1,4 +1,4 @@
-From ee86e761335bf00bdcd7cc9f3e888dda5e9e488c Mon Sep 17 00:00:00 2001
+From c288b61fb149150b73cce955f2de4bb33a221df1 Mon Sep 17 00:00:00 2001
 From: William Douglas <william.douglas@intel.com>
 Date: Tue, 10 Oct 2017 19:54:24 +0000
 Subject: [PATCH 1/2] sphinx-build isn't postfixed with 3
@@ -8,7 +8,7 @@ Subject: [PATCH 1/2] sphinx-build isn't postfixed with 3
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/docs/hawkey/CMakeLists.txt b/docs/hawkey/CMakeLists.txt
-index 377faae..77f5f23 100644
+index 321c220..417ac12 100644
 --- a/docs/hawkey/CMakeLists.txt
 +++ b/docs/hawkey/CMakeLists.txt
 @@ -4,7 +4,7 @@
@@ -19,7 +19,7 @@ index 377faae..77f5f23 100644
 +    SET(SPHINX_BUILD_NAME "sphinx-build")
  endif()
  
- ADD_CUSTOM_TARGET (doc-html
+ IF(WITH_HTML)
 -- 
-2.18.0
+2.20.1
 
