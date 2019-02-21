@@ -4,17 +4,17 @@
 #
 Name     : libdnf
 Version  : 0.17.2
-Release  : 22
+Release  : 23
 URL      : https://github.com/rpm-software-management/libdnf/archive/0.17.2.tar.gz
 Source0  : https://github.com/rpm-software-management/libdnf/archive/0.17.2.tar.gz
 Summary  : Library providing simplified C and Python API to libsolv
 Group    : Development/Tools
 License  : GPL-2.0+ LGPL-2.0 LGPL-2.1 LGPL-2.1+
-Requires: libdnf-python3
-Requires: libdnf-lib
-Requires: libdnf-license
-Requires: libdnf-locales
-Requires: libdnf-python
+Requires: libdnf-lib = %{version}-%{release}
+Requires: libdnf-license = %{version}-%{release}
+Requires: libdnf-locales = %{version}-%{release}
+Requires: libdnf-python = %{version}-%{release}
+Requires: libdnf-python3 = %{version}-%{release}
 BuildRequires : Sphinx
 BuildRequires : buildreq-cmake
 BuildRequires : gettext-dev
@@ -47,8 +47,8 @@ A Library providing simplified C and Python API to libsolv.
 %package dev
 Summary: dev components for the libdnf package.
 Group: Development
-Requires: libdnf-lib
-Provides: libdnf-devel
+Requires: libdnf-lib = %{version}-%{release}
+Provides: libdnf-devel = %{version}-%{release}
 
 %description dev
 dev components for the libdnf package.
@@ -65,7 +65,7 @@ doc components for the libdnf package.
 %package lib
 Summary: lib components for the libdnf package.
 Group: Libraries
-Requires: libdnf-license
+Requires: libdnf-license = %{version}-%{release}
 
 %description lib
 lib components for the libdnf package.
@@ -90,7 +90,7 @@ locales components for the libdnf package.
 %package python
 Summary: python components for the libdnf package.
 Group: Default
-Requires: libdnf-python3
+Requires: libdnf-python3 = %{version}-%{release}
 
 %description python
 python components for the libdnf package.
@@ -116,18 +116,19 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535567255
+export SOURCE_DATE_EPOCH=1550709657
 mkdir -p clr-build
 pushd clr-build
+export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake .. -DPYTHON_DESIRED=3
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535567255
+export SOURCE_DATE_EPOCH=1550709657
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/libdnf
-cp COPYING %{buildroot}/usr/share/doc/libdnf/COPYING
+mkdir -p %{buildroot}/usr/share/package-licenses/libdnf
+cp COPYING %{buildroot}/usr/share/package-licenses/libdnf/COPYING
 pushd clr-build
 %make_install
 popd
@@ -188,8 +189,8 @@ popd
 /usr/lib64/libdnf.so.2
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/libdnf/COPYING
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/libdnf/COPYING
 
 %files python
 %defattr(-,root,root,-)
