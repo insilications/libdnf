@@ -184,6 +184,7 @@ libdnf.so.2:_ZN6libdnf10ConfigMain7pluginsEv
 libdnf.so.2:_ZN6libdnf10ConfigMain7retriesEv
 libdnf.so.2:_ZN6libdnf10ConfigMain7timeoutEv
 libdnf.so.2:_ZN6libdnf10ConfigMain7tsflagsEv
+libdnf.so.2:_ZN6libdnf10ConfigMain7varsdirEv
 libdnf.so.2:_ZN6libdnf10ConfigMain8assumenoEv
 libdnf.so.2:_ZN6libdnf10ConfigMain8cachedirEv
 libdnf.so.2:_ZN6libdnf10ConfigMain8deltarpmEv
@@ -1248,6 +1249,7 @@ libdnf.so.2:dnf_context_get_state
 libdnf.so.2:dnf_context_get_transaction
 libdnf.so.2:dnf_context_get_type
 libdnf.so.2:dnf_context_get_user_agent
+libdnf.so.2:dnf_context_get_vars_dir
 libdnf.so.2:dnf_context_get_write_history
 libdnf.so.2:dnf_context_get_zchunk
 libdnf.so.2:dnf_context_globals_init
@@ -1281,6 +1283,7 @@ libdnf.so.2:dnf_context_set_rpm_verbosity
 libdnf.so.2:dnf_context_set_solv_dir
 libdnf.so.2:dnf_context_set_source_root
 libdnf.so.2:dnf_context_set_user_agent
+libdnf.so.2:dnf_context_set_vars_dir
 libdnf.so.2:dnf_context_set_vendor_cache_dir
 libdnf.so.2:dnf_context_set_vendor_solv_dir
 libdnf.so.2:dnf_context_set_write_history
