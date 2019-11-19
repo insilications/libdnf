@@ -10,8 +10,8 @@ libjson-c.so.4
 libmodulemd.so.1
 libpython3.7m.so.1.0
 librepo.so.0
-librpm.so.3
-librpmio.so.3
+librpm.so.8
+librpmio.so.8
 libsmartcols.so.1
 libsolv.so.1
 libsolvext.so.1

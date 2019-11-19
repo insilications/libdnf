@@ -4,12 +4,12 @@
 #
 Name     : libdnf
 Version  : 0.28.1
-Release  : 29
+Release  : 30
 URL      : https://github.com/rpm-software-management/libdnf/archive/0.28.1.tar.gz
 Source0  : https://github.com/rpm-software-management/libdnf/archive/0.28.1.tar.gz
 Summary  : Library providing simplified C and Python API to libsolv
 Group    : Development/Tools
-License  : GPL-2.0+ LGPL-2.0 LGPL-2.1 LGPL-2.1+
+License  : LGPL-2.1 LGPL-2.1+
 Requires: libdnf-lib = %{version}-%{release}
 Requires: libdnf-license = %{version}-%{release}
 Requires: libdnf-locales = %{version}-%{release}
@@ -55,6 +55,7 @@ Summary: dev components for the libdnf package.
 Group: Development
 Requires: libdnf-lib = %{version}-%{release}
 Provides: libdnf-devel = %{version}-%{release}
+Requires: libdnf = %{version}-%{release}
 
 %description dev
 dev components for the libdnf package.
@@ -113,6 +114,7 @@ python3 components for the libdnf package.
 
 %prep
 %setup -q -n libdnf-0.28.1
+cd %{_builddir}/libdnf-0.28.1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -121,27 +123,31 @@ python3 components for the libdnf package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1553705952
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1574187079
 mkdir -p clr-build
 pushd clr-build
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 %cmake .. -DPYTHON_DESIRED=3
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 cd clr-build; make test || :
 
 %install
-export SOURCE_DATE_EPOCH=1553705952
+export SOURCE_DATE_EPOCH=1574187079
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libdnf
-cp COPYING %{buildroot}/usr/share/package-licenses/libdnf/COPYING
+cp %{_builddir}/libdnf-0.28.1/COPYING %{buildroot}/usr/share/package-licenses/libdnf/01a6b4bf79aca9b556822601186afab86e8c4fbf
 pushd clr-build
 %make_install
 popd
@@ -221,7 +227,7 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/libdnf/COPYING
+/usr/share/package-licenses/libdnf/01a6b4bf79aca9b556822601186afab86e8c4fbf
 
 %files python
 %defattr(-,root,root,-)
