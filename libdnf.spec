@@ -4,7 +4,7 @@
 #
 Name     : libdnf
 Version  : 0.28.1
-Release  : 35
+Release  : 36
 URL      : https://github.com/rpm-software-management/libdnf/archive/0.28.1.tar.gz
 Source0  : https://github.com/rpm-software-management/libdnf/archive/0.28.1.tar.gz
 Summary  : Library providing simplified C and Python API to libsolv
@@ -55,6 +55,7 @@ Summary: dev components for the libdnf package.
 Group: Development
 Requires: libdnf-lib = %{version}-%{release}
 Provides: libdnf-devel = %{version}-%{release}
+Requires: libdnf = %{version}-%{release}
 Requires: libdnf = %{version}-%{release}
 
 %description dev
@@ -124,9 +125,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1574195497
+export SOURCE_DATE_EPOCH=1583167346
 mkdir -p clr-build
 pushd clr-build
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -144,7 +146,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 cd clr-build; make test || :
 
 %install
-export SOURCE_DATE_EPOCH=1574195497
+export SOURCE_DATE_EPOCH=1583167346
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libdnf
 cp %{_builddir}/libdnf-0.28.1/COPYING %{buildroot}/usr/share/package-licenses/libdnf/01a6b4bf79aca9b556822601186afab86e8c4fbf
