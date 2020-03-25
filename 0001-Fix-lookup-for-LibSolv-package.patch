@@ -1,7 +1,7 @@
-From 47507ce7e86fd847563d96232e6c2d945e5c2681 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Patrick McCarty <patrick.mccarty@intel.com>
 Date: Thu, 12 Jul 2018 15:12:08 -0700
-Subject: [PATCH 2/2] Fix lookup for LibSolv package
+Subject: [PATCH] Fix lookup for LibSolv package
 
 The FindLibSolv.cmake file lives in /usr/share/cmake/Modules, so ensure
 the libdnf build looks at that location.
@@ -12,7 +12,7 @@ Signed-off-by: Patrick McCarty <patrick.mccarty@intel.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 16b6330..c342bbe 100644
+index 834eea0..798b751 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -14,7 +14,7 @@ include(GNUInstallDirs)
@@ -24,6 +24,3 @@ index 16b6330..c342bbe 100644
  if(${CMAKE_VERSION} VERSION_LESS 3)
      set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH};${CMAKE_SOURCE_DIR}/cmake/modules-cmake-2)
  endif()
--- 
-2.20.1
-

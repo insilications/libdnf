@@ -1,3 +1,2 @@
-0001-sphinx-build-isn-t-postfixed-with-3.patch
-0002-Fix-lookup-for-LibSolv-package.patch
-less-fsync.patch
+0001-Fix-lookup-for-LibSolv-package.patch
+0002-do-fewer-fsyncs.patch

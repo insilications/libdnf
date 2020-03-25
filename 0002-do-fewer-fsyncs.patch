@@ -1,12 +1,21 @@
-do fewer fsyncs
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Arjan van de Ven <arjan@linux.intel.com>
+Date: Mon, 23 Jul 2018 15:04:04 +0000
+Subject: [PATCH] do fewer fsyncs
 
-we only use dnf to create volatile chroots, and the fdatasync/fsync's are killing us on performance
+we only use dnf to create volatile chroots, and the fdatasync/fsync's
+are killing us on performance
+
+Signed-off-by: Patrick McCarty <patrick.mccarty@intel.com>
+---
+ libdnf/utils/sqlite3/Sqlite3.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/libdnf/utils/sqlite3/Sqlite3.cpp b/libdnf/utils/sqlite3/Sqlite3.cpp
-index 61a0ed6..c8a88f7 100644
+index 417e890..33313e9 100644
 --- a/libdnf/utils/sqlite3/Sqlite3.cpp
 +++ b/libdnf/utils/sqlite3/Sqlite3.cpp
-@@ -36,7 +36,7 @@ SQLite3::open()
+@@ -41,7 +41,7 @@ SQLite3::open()
          if (sqlite3_db_readonly(db, "main") == 1)
              exec("PRAGMA locking_mode = NORMAL; PRAGMA foreign_keys = ON;");
          else

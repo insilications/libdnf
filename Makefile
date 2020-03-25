@@ -1,5 +1,5 @@
 PKG_NAME := libdnf
-URL = https://github.com/rpm-software-management/libdnf/archive/0.28.1.tar.gz
+URL = https://github.com/rpm-software-management/libdnf/archive/0.45.0/libdnf-0.45.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common

@@ -1,8 +1,3 @@
-0.28.1
+0.45.0
 gpgme-dev
-pkgconfig(cppunit)
-pkgconfig(json-c)
-pkgconfig(modulemd)
-pkgconfig(sqlite3)
 popt-dev
-python3-dev
