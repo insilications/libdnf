@@ -4,7 +4,7 @@
 #
 Name     : libdnf
 Version  : 0.45.0
-Release  : 41
+Release  : 42
 URL      : https://github.com/rpm-software-management/libdnf/archive/0.45.0/libdnf-0.45.0.tar.gz
 Source0  : https://github.com/rpm-software-management/libdnf/archive/0.45.0/libdnf-0.45.0.tar.gz
 Summary  : Library providing simplified C and Python API to libsolv
@@ -20,6 +20,7 @@ BuildRequires : buildreq-cmake
 BuildRequires : gettext-dev
 BuildRequires : glibc-bin
 BuildRequires : gpgme-dev
+BuildRequires : gtk-doc-data
 BuildRequires : libassuan-dev
 BuildRequires : nose
 BuildRequires : openssl-dev
@@ -45,6 +46,7 @@ BuildRequires : python3-dev
 BuildRequires : swig
 Patch1: 0001-Fix-lookup-for-LibSolv-package.patch
 Patch2: 0002-do-fewer-fsyncs.patch
+Patch3: 0003-tests-Fix-incorrect-usage-of-the-fail_unless-macro.patch
 
 %description
 A Library providing simplified C and Python API to libsolv.
@@ -108,19 +110,20 @@ python3 components for the libdnf package.
 cd %{_builddir}/libdnf-0.45.0
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1585098586
+export SOURCE_DATE_EPOCH=1607987326
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 %cmake .. -DWITH_BINDINGS=ON \
 -DWITH_GTKDOC=OFF \
@@ -130,7 +133,7 @@ export CXXFLAGS="$CXXFLAGS -fno-lto "
 -DENABLE_RHSM_SUPPORT=OFF \
 -DENABLE_SOLV_URPMREORDER=OFF \
 -DPYTHON_DESIRED=3
-make  %{?_smp_mflags}  VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %check
@@ -141,7 +144,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 cd clr-build; make test || :
 
 %install
-export SOURCE_DATE_EPOCH=1585098586
+export SOURCE_DATE_EPOCH=1607987326
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libdnf
 cp %{_builddir}/libdnf-0.45.0/COPYING %{buildroot}/usr/share/package-licenses/libdnf/01a6b4bf79aca9b556822601186afab86e8c4fbf

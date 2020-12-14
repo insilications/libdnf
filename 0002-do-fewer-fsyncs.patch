@@ -12,7 +12,7 @@ Signed-off-by: Patrick McCarty <patrick.mccarty@intel.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/libdnf/utils/sqlite3/Sqlite3.cpp b/libdnf/utils/sqlite3/Sqlite3.cpp
-index 417e890..33313e9 100644
+index 0b059cc..366fab6 100644
 --- a/libdnf/utils/sqlite3/Sqlite3.cpp
 +++ b/libdnf/utils/sqlite3/Sqlite3.cpp
 @@ -41,7 +41,7 @@ SQLite3::open()
