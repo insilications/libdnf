@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : libdnf
-Version  : 8
+Version  : 0.62.0
 Release  : 45
-URL      : file:///aot/build/clearlinux/packages/libdnf/libdnf-8.tar.gz
-Source0  : file:///aot/build/clearlinux/packages/libdnf/libdnf-8.tar.gz
+URL      : https://github.com/rpm-software-management/libdnf/archive/refs/tags/0.62.0.tar.gz
+Source0  : https://github.com/rpm-software-management/libdnf/archive/refs/tags/0.62.0.tar.gz
 Summary  : Library providing simplified C and Python API to libsolv
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1 LGPL-2.1+
@@ -163,8 +163,8 @@ staticdev components for the libdnf package.
 
 
 %prep
-%setup -q -n libdnf
-cd %{_builddir}/libdnf
+%setup -q -n libdnf-0.62.0
+cd %{_builddir}/libdnf-0.62.0
 %patch1 -p1
 %patch2 -p1
 
@@ -174,7 +174,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1618912353
+export SOURCE_DATE_EPOCH=1618941183
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -353,7 +353,7 @@ fi
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1618912353
+export SOURCE_DATE_EPOCH=1618941183
 rm -rf %{buildroot}
 pushd clr-build-special
 %make_install_special  || :
