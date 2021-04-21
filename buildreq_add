@@ -21,6 +21,8 @@ compat-lua-53-man
 compat-lua-53-staticdev
 db-dev
 dbus-dev
+dbus-glib
+dbus-glib-dev
 dejagnu
 docbook-utils
 docbook-xml
@@ -56,6 +58,7 @@ gdb
 gdb-dev
 gettext-bin
 git
+glib
 glibc-abi
 glibc-bench
 glibc-bin
@@ -69,6 +72,7 @@ glibc-locale
 glibc-nscd
 glibc-staticdev
 glibc-utils
+glib-dev
 gmp-dev
 gmp-staticdev
 gnupg
@@ -86,7 +90,6 @@ libassuan-dev
 libcap
 libcap-dev
 libcomps-dev
-libcomps-staticdev
 libedit
 libedit-dev
 libffi-dev
@@ -100,7 +103,6 @@ libmodulemd-staticdev
 librepo-dev
 librepo-staticdev
 libsolv-dev
-libsolv-staticdev
 libstdc++
 libtool
 libtool-dev
@@ -125,6 +127,9 @@ popt
 popt-dev
 python3-dev
 python3-staticdev
+rpm
+rpm-dev
+smartcols
 Sphinx
 sqlite-autoconf
 sqlite-autoconf-dev
